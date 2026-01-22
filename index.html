@@ -1,0 +1,375 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sirius | Kumaran S</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;800&family=Fira+Code:wght@400;500&display=swap');
+            
+            body { margin: 0; background: #000; color: white; overflow-x: hidden; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+            #canvas-container { position: fixed; top: 0; left: 0; z-index: -1; pointer-events: none; width: 100%; height: 100vh; }
+            
+            .glass-card { 
+                background: rgba(255, 255, 255, 0.02); 
+                backdrop-filter: blur(15px); 
+                border: 1px solid rgba(255, 255, 255, 0.1); 
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            }
+            .glass-card:hover { 
+                border-color: #38bdf8; 
+                transform: translateY(-8px); 
+                box-shadow: 0 15px 35px -10px rgba(56, 189, 248, 0.4); 
+            }
+
+            .text-gradient { background: linear-gradient(to right, #38bdf8, #818cf8, #d946ef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+            .bg-gradient-btn { background: linear-gradient(90deg, #6366f1, #d946ef); }
+            .section-accent { border-left: 4px solid #38bdf8; padding-left: 20px; }
+
+            .logo-container { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.2rem; height: 130px; }
+            .logo-container img { width: 50px; height: 50px; object-fit: contain; margin-bottom: 0.5rem; transition: transform 0.3s ease; }
+            .logo-container:hover img { transform: scale(1.1); filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5)); }
+
+            .input-field { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px; border-radius: 12px; color: white; outline: none; transition: 0.3s; width: 100%; }
+            .input-field:focus { border-color: #38bdf8; }
+
+            ::-webkit-scrollbar { width: 5px; }
+            ::-webkit-scrollbar-track { background: #020617; }
+            ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 10px; }
+            
+            .achievement-tag { background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); padding: 4px 12px; border-radius: 99px; font-size: 0.65rem; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.1em; display: inline-block; }
+            
+            .mission-card { height: 100%; display: flex; flex-direction: column; min-height: 240px; justify-content: flex-start; }
+            
+            #scramble-name { font-variant-numeric: tabular-nums; min-height: 1.2em; }
+        </style>
+    </head>
+    <body>
+
+        <div id="canvas-container"></div>
+
+        <nav class="fixed w-full z-50 px-10 py-6 flex justify-between items-center backdrop-blur-md border-b border-white/5">
+            <div class="text-xl font-black tracking-tighter uppercase text-white">KUMARAN<span class="text-sky-400"> S</span></div>
+            <div class="hidden md:flex items-center space-x-8 text-[10px] tracking-[0.3em] font-bold uppercase text-white/80">
+                <a href="#about" class="hover:text-sky-400 transition">ABOUT</a>
+                <a href="#experience" class="hover:text-sky-400 transition">EXPERIENCE</a>
+                <a href="#expertise" class="hover:text-sky-400 transition">SKILLS</a>
+                <a href="#missions" class="hover:text-sky-400 transition">MISSIONS</a>
+                <a href="#contact" class="bg-sky-500/20 border border-sky-500/50 px-6 py-2 rounded-full hover:bg-sky-500 transition leading-none text-white">CONTACT</a>
+            </div>
+        </nav>
+
+        <section id="home" class="h-screen flex flex-col items-center justify-center text-center px-6">
+            <div data-aos="fade-up" data-aos-duration="1500">
+                <h2 class="text-white text-2xl md:text-4xl font-extrabold mb-2 opacity-80 uppercase tracking-[0.2em]">Mission Command</h2>
+                
+                <h1 id="scramble-name" class="text-5xl md:text-8xl font-black mb-4 tracking-tighter uppercase text-gradient">
+                    KUMARAN AADHIRAI AZHAGAN S
+                </h1>
+                
+                <div class="flex flex-col items-center gap-4 mb-10">
+                    <span class="text-white text-xl md:text-3xl font-bold uppercase tracking-[0.3em] border-b-2 border-sky-500/50 pb-2">
+                        Aerospace Engineer
+                    </span>
+                    <div class="text-sky-400 text-lg md:text-xl font-medium tracking-widest uppercase h-[30px]">
+                        <span id="typewriter"></span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-6 justify-center">
+                    <a href="#missions" class="bg-gradient-btn px-10 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition shadow-lg shadow-indigo-500/25">
+                        Explore Missions <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="bg-white/5 border border-white/10 px-10 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-white/10 transition">
+                        Secure Transmission
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 px-10 max-w-5xl mx-auto border-t border-white/5 text-center">
+            <h3 class="text-3xl font-black mb-12 uppercase section-accent text-white inline-block">About Me</h3>
+            <div data-aos="fade-up">
+                <p class="text-gray-300 leading-relaxed text-2xl mb-8 font-light italic">
+                    "I am a driven Aerospace Engineer specialized in <span class="text-white font-bold">Satellite Systems and UAV Avionics</span>. My journey is defined by a relentless curiosity for how things fly and how we can control them better."
+                </p>
+                <p class="text-gray-400 text-lg leading-relaxed mb-16">
+                    From designing high-stability fixed-wing aircraft to researching satellite lifespan extension, I thrive at the intersection of structural mechanics and embedded system design.
+                </p>
+            </div>
+
+            <h4 class="text-lg font-black uppercase tracking-[0.4em] text-sky-500 mb-8">ACADEMIC TRAJECTORY</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up">
+                    <h5 class="text-xl font-black text-white uppercase tracking-tight mb-1">Hindustan Institute of Technology and Science</h5>
+                    <p class="text-sky-400 font-bold text-sm uppercase mb-4">B.Tech Aerospace Engineering</p>
+                    <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">2022 - 2026 | Chennai</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                    <h5 class="text-xl font-black text-white uppercase tracking-tight mb-1">SRV Matriculation Higher Secondary School</h5>
+                    <p class="text-purple-400 font-bold text-sm uppercase mb-4">Higher Secondary Education</p>
+                    <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">2020 - 2022 | Tiruchirappalli</p>
+                </div>
+            </div>
+
+            <h4 class="text-lg font-black uppercase tracking-[0.4em] text-sky-500 mb-8">OPERATIONAL SUCCESSES</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-8 rounded-[32px]" data-aos="zoom-in">
+                    <div class="achievement-tag mb-4">NASA Competition</div>
+                    <h5 class="text-xl font-bold text-white mb-2 uppercase">AAS NASA CanSat</h5>
+                    <p class="text-gray-400 text-xs leading-relaxed italic">Achieved 6th place nationally and 25th globally for excellence in payload and telemetry design.</p>
+                </div>
+                <div class="glass-card p-8 rounded-[32px]" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="achievement-tag mb-4">Global Recognition</div>
+                    <h5 class="text-xl font-bold text-white mb-2 uppercase">UNAM CanSat</h5>
+                    <p class="text-gray-400 text-xs leading-relaxed italic">Awarded 1st place globally out of 120 teams for outstanding system integration and innovation in CanSat engineering.</p>
+                </div>
+                <div class="glass-card p-8 rounded-[32px]" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="achievement-tag mb-4">Citizen Science</div>
+                    <h5 class="text-xl font-bold text-white mb-2 uppercase">Asteroid Discovery</h5>
+                    <p class="text-gray-400 text-xs leading-relaxed italic">Identified and classified over 1,000 celestial objects in international science efforts.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 px-10 max-w-7xl mx-auto border-t border-white/5 text-white">
+            <h3 class="text-3xl font-black mb-12 uppercase section-accent tracking-widest text-white">Professional Log</h3>
+            <div class="space-y-6">
+                <div class="glass-card p-10 rounded-[32px]" data-aos="fade-right">
+                    <div class="flex justify-between items-start flex-wrap gap-4 mb-2">
+                        <h4 class="text-2xl font-bold uppercase tracking-tight">Student Intern</h4>
+                        <span class="text-gray-500 text-xs font-bold uppercase tracking-widest">12/2024 - 01/2025</span>
+                    </div>
+                    <p class="text-sky-400 text-[10px] font-bold mb-4 uppercase italic tracking-[0.2em]">DRDO, Ministry of Defence</p>
+                    <ul class="text-gray-400 text-sm list-disc ml-4 space-y-2">
+                        <li>Worked on rotorcraft systems and aerodynamics.</li>
+                    </ul>
+                </div>
+                
+                        <div class="glass-card p-10 rounded-[32px]" data-aos="fade-right">
+                    <div class="flex justify-between items-start flex-wrap gap-4 mb-2">
+                        <h4 class="text-2xl font-bold uppercase tracking-tight">Vice President</h4>
+                        <span class="text-gray-500 text-xs font-bold uppercase tracking-widest">04/2024 - Present</span>
+                    </div>
+                    <p class="text-sky-400 text-[10px] font-bold mb-4 uppercase italic tracking-[0.2em]"> R3 CubeSat Club, Hindustan Institute of Tech & Science</p>
+                    <ul class="text-gray-400 text-sm list-disc ml-4 space-y-2">
+                        <li>Led satellite subsystem design, integration, and mission planning.</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card p-10 rounded-[32px]" data-aos="fade-left">
+                    <div class="flex justify-between items-start flex-wrap gap-4 mb-2">
+                        <h4 class="text-2xl font-bold uppercase tracking-tight">Citizen Scientist</h4>
+                        <span class="text-gray-500 text-xs font-bold uppercase tracking-widest">04/2025 - Present</span>
+                    </div>
+                    <p class="text-sky-400 text-[10px] font-bold mb-4 uppercase italic tracking-[0.2em]">Zooniverse</p>
+                    <ul class="text-gray-400 text-sm list-disc ml-4 space-y-2">
+                        <li>Classified astronomical data for research including asteroid detection using Astrometrica.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="expertise" class="py-20 px-10 max-w-7xl mx-auto border-t border-white/5">
+            <h3 class="text-3xl font-black mb-12 uppercase text-center tracking-[0.3em] text-white">Software Expertise 🛠️</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-white">
+                <div class="glass-card logo-container rounded-3xl" data-aos="zoom-in-up" data-aos-delay="100"><img src="Matlab.jpg" alt="MATLAB"><span class="text-[9px] font-bold uppercase tracking-widest">MATLAB</span></div>
+                <div class="glass-card logo-container rounded-3xl" data-aos="zoom-in-up" data-aos-delay="200"><img src="AnsysSTK.jpg" alt="Ansys STK"><span class="text-[9px] font-bold uppercase tracking-widest">Ansys STK</span></div>
+                <div class="glass-card logo-container rounded-3xl" data-aos="zoom-in-up" data-aos-delay="300"><img src="Solidworks.jpg" alt="SolidWorks"><span class="text-[9px] font-bold uppercase tracking-widest">SolidWorks</span></div>
+                <div class="glass-card logo-container rounded-3xl" data-aos="zoom-in-up" data-aos-delay="400"><img src="Autocad.jpg" alt="AutoCAD"><span class="text-[9px] font-bold uppercase tracking-widest">AutoCAD</span></div>
+                <div class="glass-card logo-container rounded-3xl" data-aos="zoom-in-up" data-aos-delay="500"><img src="Gmat.jpg" alt="GMAT"><span class="text-[9px] font-bold uppercase tracking-widest">GMAT</span></div>
+                <div class="glass-card logo-container rounded-3xl" data-aos="zoom-in-up" data-aos-delay="100"><img src="Arduino.jpg" alt="Arduino"><span class="text-[9px] font-bold uppercase tracking-widest">Arduino IDE</span></div>
+                <div class="glass-card logo-container rounded-3xl" data-aos="zoom-in-up" data-aos-delay="200"><img src="Fusion360.jpg" alt="Fusion 360"><span class="text-[9px] font-bold uppercase tracking-widest">Fusion 360</span></div>
+                <div class="glass-card logo-container rounded-3xl" data-aos="zoom-in-up" data-aos-delay="300"><img src="Astrometrica.jpg" alt="Astrometrica"><span class="text-[9px] font-bold uppercase tracking-widest">Astrometrica</span></div>
+                <div class="glass-card logo-container rounded-3xl" data-aos="zoom-in-up" data-aos-delay="400"><img src="Python.jpg" alt="Python"><span class="text-[9px] font-bold uppercase tracking-widest">Python</span></div>
+                <div class="glass-card logo-container rounded-3xl" data-aos="zoom-in-up" data-aos-delay="500"><img src="Tinkercad.jpg" alt="TinkerCAD"><span class="text-[9px] font-bold uppercase tracking-widest">TinkerCAD</span></div>
+            </div>
+        </section>
+
+        <section id="missions" class="py-20 px-10 max-w-7xl mx-auto border-t border-white/5">
+            <h3 class="text-3xl font-black mb-12 uppercase text-center text-white">Full Mission Grid</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-white">
+                <div class="glass-card p-10 rounded-[32px] mission-card" data-aos="fade-up">
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">02/2023 - 06/2023</span>
+                    <h4 class="font-bold my-4 uppercase text-sky-400 text-lg">Fixed-Wing RC Aircraft</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed italic">Designed and fabricated a remote-controlled airplane optimized for stable flight.</p>
+                </div>
+                <div class="glass-card p-10 rounded-[32px] mission-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">07/2023 - 11/2023</span>
+                    <h4 class="font-bold my-4 uppercase text-sky-400 text-lg">CubeSat Prototyping</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed italic">Integrated sensors and communication modules using Arduino system architecture.</p>
+                </div>
+                <div class="glass-card p-10 rounded-[32px] mission-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">01/2024 - 05/2024</span>
+                    <h4 class="font-bold my-4 uppercase text-sky-400 text-lg">Custom Micro-UAV</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed italic">Designed quadcopter for surveillance with PID stability and avionics control.</p>
+                </div>
+                <div class="glass-card p-10 rounded-[32px] mission-card" data-aos="fade-up">
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">01/2024 - 05/2024</span>
+                    <h4 class="font-bold my-4 uppercase text-sky-400 text-lg">Terrestrial Mars Rover</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed italic">Replicated structural features of NASA's Mars rover suspension mechanics.</p>
+                </div>
+                <div class="glass-card p-10 rounded-[32px] mission-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">06/2024 - 11/2025</span>
+                    <h4 class="font-bold my-4 uppercase text-sky-400 text-lg">Satellite Dynamics</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed italic">Modeled orientation using 2-axis gimbal steering for LEO orbital tracking.</p>
+                </div>
+                <div class="glass-card p-10 rounded-[32px] mission-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">01/2025 - 05/2025</span>
+                    <h4 class="font-bold my-4 uppercase text-sky-400 text-lg">Ground Station Modeling</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed italic">Simulated satellite passes and visibility using MATLAB for orbital geometry analysis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 px-10 max-w-7xl mx-auto border-t border-white/5">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-white">
+                <div data-aos="fade-right">
+                    <h2 class="text-5xl font-black mb-6 uppercase text-gradient">Mission Control.</h2>
+                    <div class="flex gap-6 mt-10">
+                        <a href="https://instagram.com/kumaran.xd/" target="_blank" class="glass-card p-6 rounded-3xl text-3xl hover:text-sky-400 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/in/kumaranaadhiraiazhagans/" target="_blank" class="glass-card p-6 rounded-3xl text-3xl hover:text-sky-400 transition"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <form id="contact-form" class="glass-card p-10 rounded-[40px] flex flex-col gap-6" data-aos="fade-left">
+                    <input type="text" name="name" placeholder="Pilot Name" class="input-field" required>
+                    <input type="email" name="email" placeholder="Communication Frequency (Email)" class="input-field" required>
+                    <textarea name="message" rows="4" placeholder="Mission Intel..." class="input-field" required></textarea>
+                    <button type="submit" id="submit-btn" class="bg-gradient-btn py-4 rounded-3xl font-black uppercase text-white hover:opacity-90 transition">Transmit Signal <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="py-10 text-center border-t border-white/5 bg-black/40">
+            <p class="text-gray-600 text-[10px] uppercase tracking-[0.6em] font-bold text-white/50">© 2026 KUMARAN AADHIRAI AZHAGAN S | BUILT FOR BEYOND</p>
+        </footer>
+
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init({ duration: 1000, once: true });
+
+            const nameElement = document.getElementById('scramble-name');
+            const finalName = "KUMARAN AADHIRAI AZHAGAN S";
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+            let iteration = 0;
+            
+            const scrambleInterval = setInterval(() => {
+                nameElement.innerText = finalName.split("")
+                    .map((char, index) => {
+                        if(index < iteration) return finalName[index];
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    })
+                    .join("");
+                
+                if(iteration >= finalName.length) clearInterval(scrambleInterval);
+                iteration += 1 / 2;
+            }, 30);
+
+            const typewriterEl = document.getElementById('typewriter');
+            new Typewriter(typewriterEl, {
+                strings: ['Astrophysics Enthusiast', 'Propulsion System Lover', 'Satellite Systems Specialist', 'UAV Avionics Architect', 'Orbital Mechanics Researcher', 'Deep Learning Visionary'],
+                autoStart: true,
+                loop: true,
+                delay: 70,
+                deleteSpeed: 40,
+                cursor: '|'
+            });
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1500);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            const loader = new THREE.TextureLoader();
+            loader.setCrossOrigin('anonymous');
+
+            const starGeo = new THREE.BufferGeometry();
+            const starPos = new Float32Array(20000 * 3);
+            for(let i=0; i<60000; i++) starPos[i] = (Math.random() - 0.5) * 1500;
+            starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+            scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ size: 0.2, color: 0xffffff })));
+
+            const earthMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.9, metalness: 0.1 });
+            loader.load('https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_atmos_2048.jpg', (tex) => { 
+                earthMat.map = tex; earthMat.color.set(0xffffff); earthMat.needsUpdate = true; 
+            });
+            const earth = new THREE.Mesh(new THREE.SphereGeometry(40, 64, 64), earthMat);
+            scene.add(earth);
+
+            const satellites = [];
+            const satMat = new THREE.MeshStandardMaterial({ color: 0xcccccc, metalness: 0.9, roughness: 0.2 });
+            const panelMat = new THREE.MeshStandardMaterial({ color: 0x001a33, metalness: 0.5, roughness: 0.1, side: THREE.DoubleSide });
+
+            function createHyperSatellite() {
+                const group = new THREE.Group();
+                const bus = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 1.0, 16), satMat);
+                bus.rotation.x = Math.PI / 2;
+                const p1 = new THREE.Mesh(new THREE.PlaneGeometry(3.0, 0.6), panelMat);
+                p1.position.x = 1.8; const p2 = p1.clone(); p2.position.x = -1.8;
+                group.add(bus, p1, p2);
+                scene.add(group);
+                return { mesh: group, r: 55 + Math.random() * 250, s: 0.0001 + Math.random() * 0.001, t: (Math.random() - 0.5) * Math.PI * 1.8, angle: Math.random() * Math.PI * 2 };
+            }
+            for(let i=0; i<100; i++) satellites.push(createHyperSatellite());
+
+            scene.add(new THREE.DirectionalLight(0xffffff, 2.5), new THREE.AmbientLight(0x222222));
+            camera.position.z = 180;
+
+            let mX = 0, mY = 0;
+            document.addEventListener('mousemove', (e) => { 
+                mX = (e.clientX - window.innerWidth / 2) * 0.05; 
+                mY = (e.clientY - window.innerHeight / 2) * 0.05; 
+            });
+
+            function animate() {
+                requestAnimationFrame(animate);
+                earth.rotation.y += 0.0006;
+                satellites.forEach(s => {
+                    s.angle += s.s;
+                    s.mesh.position.set(Math.cos(s.angle)*s.r, Math.sin(s.angle)*s.r*Math.sin(s.t), Math.sin(s.angle)*s.r*Math.cos(s.t));
+                    s.mesh.lookAt(0,0,0);
+                });
+                camera.position.x += (mX - camera.position.x) * 0.05; 
+                camera.position.y += (-mY - camera.position.y) * 0.05; 
+                camera.lookAt(0,0,0);
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxT0pPuY_0-6Mn-dPTOz4x9UN5T9skd7l79yBcBjifjEBoNc9QeeLWAWeFULlDDLTNo/exec';
+            const form = document.getElementById('contact-form');
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                const btn = document.getElementById('submit-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = "UPLINKING... 🛰️";
+                btn.disabled = true;
+                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                    .then(r => { 
+                        alert('Transmission Successful! 🚀'); 
+                        form.reset(); 
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    })
+                    .catch(err => { 
+                        alert('Communication Error. Re-attempt required.'); 
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    });
+            });
+
+            window.addEventListener('resize', () => { 
+                camera.aspect = window.innerWidth / window.innerHeight; 
+                camera.updateProjectionMatrix(); 
+                renderer.setSize(window.innerWidth, window.innerHeight); 
+            });
+        </script>
+    </body>
+    </html>
