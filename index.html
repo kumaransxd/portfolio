@@ -50,6 +50,9 @@
         </style>
     </head>
     <body>
+<audio id="bgm" loop>
+  <source src="sound.mp3" type="audio/mpeg">
+</audio>
 
         <div id="canvas-container"></div>
 
@@ -370,10 +373,22 @@
                 camera.updateProjectionMatrix(); 
                 renderer.setSize(window.innerWidth, window.innerHeight); 
             });
+            // 🔊 Silent background music start (first natural click)
+const bgm = document.getElementById("bgm");
+bgm.volume = 0.4;
+
+const unlockAudio = () => {
+  bgm.play().catch(() => {});
+  document.removeEventListener("pointerdown", unlockAudio);
+};
+
+document.addEventListener("pointerdown", unlockAudio);
+
         </script>
     </body>
 
     </html>
+
 
 
 
