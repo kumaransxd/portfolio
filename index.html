@@ -5387,7 +5387,7 @@ async function fetchUserLocation() {
     if (!userLocationPromise) {
         userLocationPromise = (async () => {
             try {
-                const response = await fetch('https://ipwho.is/');
+                const response = await fetch('https://ipwhois.app/json/');
                 if (!response.ok) throw new Error('Network response not ok');
                 const data = await response.json();
                 if (data && data.success) {
@@ -5398,7 +5398,7 @@ async function fetchUserLocation() {
                         country: data.country || "UNKNOWN",
                         latitude: data.latitude || null,
                         longitude: data.longitude || null,
-                        isp: (data.connection && data.connection.isp) ? data.connection.isp : "UNKNOWN"
+                        isp: data.isp || "UNKNOWN"
                     };
                 } else {
                     throw new Error(data.message || 'API error');
