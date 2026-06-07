@@ -5398,7 +5398,10 @@ async function fetchUserLocation() {
                         country: data.countryName || "UNKNOWN",
                         latitude: data.latitude || null,
                         longitude: data.longitude || null,
-                        isp: data.asnOrganization || "UNKNOWN"
+                        isp: data.asnOrganization || "UNKNOWN",
+                        is_proxy: data.isProxy !== undefined ? data.isProxy : null,
+                        zip_code: data.zipCode || "UNKNOWN",
+                        ip_version: data.ipVersion ? `IPv${data.ipVersion}` : "UNKNOWN"
                     };
                 } else {
                     throw new Error('API returned empty response');
@@ -5464,7 +5467,14 @@ async function logVisitorSession() {
         longitude: null,
         isp: "BLOCKED/UNKNOWN",
         user_agent: navigator.userAgent,
-        screen_size: `${window.screen.width}x${window.screen.height}`
+        screen_size: `${window.screen.width}x${window.screen.height}`,
+        is_proxy: null,
+        zip_code: "BLOCKED/UNKNOWN",
+        ip_version: "UNKNOWN",
+        cpu_cores: navigator.hardwareConcurrency || null,
+        device_memory: navigator.deviceMemory || null,
+        touch_points: navigator.maxTouchPoints || 0,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "UNKNOWN"
     };
     
     try {
@@ -5477,6 +5487,9 @@ async function logVisitorSession() {
             logPayload.latitude = data.latitude;
             logPayload.longitude = data.longitude;
             logPayload.isp = data.isp;
+            logPayload.is_proxy = data.is_proxy;
+            logPayload.zip_code = data.zip_code;
+            logPayload.ip_version = data.ip_version;
         }
     } catch (geoErr) {
         console.warn('Geolocation lookup blocked or failed. Logging basic device telemetry instead.', geoErr);
