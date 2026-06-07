@@ -13,6 +13,8 @@
     <meta property="og:image" content="preview.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌌</text></svg>">
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="42e89dc0-d092-4acd-a890-8a53c21122db"></script>
     <title>Galaxy</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -365,8 +367,8 @@
             .space-academy {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-                max-width: 900px;
+                gap: 35px;
+                max-width: 1080px;
                 margin: 0 auto;
                 padding: 40px 20px;
             }
@@ -398,20 +400,20 @@
             }
             .academy-badge {
                 position: absolute;
-                top: 16px;
-                right: 16px;
-                width: 50px;
-                height: 50px;
+                top: 20px;
+                right: 20px;
+                width: 58px;
+                height: 58px;
                 background: linear-gradient(135deg, var(--card-color), var(--card-color-alt));
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 1.5rem;
+                font-size: 1.8rem;
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             }
             .academy-header {
-                padding: 24px 24px 0;
+                padding: 32px 32px 0;
             }
             .academy-years {
                 display: flex;
@@ -421,7 +423,7 @@
             }
             .academy-year {
                 font-family: 'Fira Code', monospace;
-                font-size: 0.9rem;
+                font-size: 0.95rem;
                 font-weight: 700;
                 color: var(--card-color);
                 padding: 4px 12px;
@@ -437,7 +439,7 @@
                 display: inline-flex;
                 align-items: center;
                 gap: 6px;
-                font-size: 0.6rem;
+                font-size: 0.65rem;
                 font-weight: 700;
                 text-transform: uppercase;
                 letter-spacing: 0.1em;
@@ -462,17 +464,17 @@
                 animation: dot-pulse 1s ease-in-out infinite;
             }
             .academy-content {
-                padding: 20px 24px 24px;
+                padding: 24px 32px 32px;
             }
             .academy-institution {
-                font-size: 1.3rem;
+                font-size: 1.6rem;
                 font-weight: 800;
                 color: white;
                 margin-bottom: 8px;
                 line-height: 1.3;
             }
             .academy-degree {
-                font-size: 0.85rem;
+                font-size: 0.95rem;
                 color: #9ca3af;
                 margin-bottom: 16px;
                 display: flex;
@@ -486,53 +488,12 @@
                 display: flex;
                 align-items: center;
                 gap: 6px;
-                font-size: 0.75rem;
+                font-size: 0.85rem;
                 color: #6b7280;
             }
-            .academy-footer {
-                padding: 16px 24px;
-                background: rgba(0, 0, 0, 0.3);
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            .academy-tag {
-                font-size: 0.65rem;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                color: var(--card-color);
-                padding: 6px 12px;
-                background: rgba(255, 255, 255, 0.03);
-                border-radius: 6px;
-                border: 1px solid rgba(255, 255, 255, 0.05);
-            }
-            .academy-progress {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-            .academy-progress-bar {
-                width: 60px;
-                height: 4px;
-                background: rgba(255, 255, 255, 0.1);
-                border-radius: 2px;
-                overflow: hidden;
-            }
-            .academy-progress-fill {
-                height: 100%;
-                background: linear-gradient(90deg, var(--card-color), var(--card-color-alt));
-                border-radius: 2px;
-            }
-            .academy-progress-text {
-                font-family: 'Fira Code', monospace;
-                font-size: 0.7rem;
-                font-weight: 600;
-                color: var(--card-color);
-            }
             @media (max-width: 768px) {
-                .space-academy { grid-template-columns: 1fr; gap: 20px; }
-                .academy-institution { font-size: 1.1rem; }
+                .space-academy { grid-template-columns: 1fr; gap: 24px; }
+                .academy-institution { font-size: 1.35rem; }
             }
 
             /* Skills - Floating Cards Grid */
@@ -608,7 +569,7 @@
                 position: relative;
             }
             .skill-planet:hover .skill-planet-icon {
-                transform: scale(1.1) rotate(5deg);
+                transform: scale(1.1);
                 background: linear-gradient(135deg, var(--skill-color), var(--skill-color-alt));
                 box-shadow: 0 10px 30px -10px var(--skill-color);
             }
@@ -677,6 +638,101 @@
                 border-radius: 32px;
                 border: 1px solid rgba(255, 255, 255, 0.05);
             }
+
+            /* Skills filter tabs styling */
+            .filter-tab {
+                background: rgba(255, 255, 255, 0.02);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                color: #9ca3af;
+                padding: 8px 20px;
+                border-radius: 99px;
+                font-family: 'Fira Code', monospace;
+                font-size: 0.75rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .filter-tab:hover {
+                color: white;
+                border-color: rgba(56, 189, 248, 0.4);
+                background: rgba(56, 189, 248, 0.05);
+            }
+            .filter-tab.active {
+                color: #38bdf8;
+                border-color: #38bdf8;
+                background: rgba(56, 189, 248, 0.1);
+                box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+            }
+
+            /* Category-specific Tab Active Colors */
+            .filter-tab[data-filter="programming"].active {
+                color: #22c55e;
+                border-color: #22c55e;
+                background: rgba(34, 197, 94, 0.1);
+                box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+            }
+            .filter-tab[data-filter="cad"].active {
+                color: #d946ef;
+                border-color: #d946ef;
+                background: rgba(217, 70, 239, 0.1);
+                box-shadow: 0 0 20px rgba(217, 70, 239, 0.3);
+            }
+            .filter-tab[data-filter="aerospace"].active {
+                color: #818cf8;
+                border-color: #818cf8;
+                background: rgba(129, 140, 248, 0.1);
+                box-shadow: 0 0 20px rgba(129, 140, 248, 0.3);
+            }
+
+            /* Zero-G Floating Animation */
+            @keyframes zeroGFloat {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-8px); }
+            }
+
+            .skill-planet {
+                animation: zeroGFloat 5s ease-in-out infinite;
+                animation-delay: var(--delay, 0s);
+                transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.5s, box-shadow 0.5s;
+            }
+            .skill-planet:hover {
+                animation-play-state: paused;
+                transform: translateY(-12px) scale(1.05) !important;
+            }
+            .skill-planet.hidden-card {
+                opacity: 0;
+                transform: scale(0.8) !important;
+                pointer-events: none;
+                position: absolute;
+                width: 0;
+                height: 0;
+                overflow: hidden;
+                padding: 0;
+                border: none;
+                margin: 0;
+                animation: none;
+            }
+
+            /* Blueprint Grid Background */
+            .blueprint-grid {
+                position: absolute;
+                inset: 0;
+                background-image: 
+                    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+                background-size: 12px 12px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+                z-index: 0;
+            }
+            .skill-planet:hover .blueprint-grid {
+                opacity: 0.25;
+            }
+
+
 
             /* Missions - 3D Card Stack */
             .mission-stack {
@@ -1915,6 +1971,8 @@
                 to { width: var(--progress, 100%); }
             }
 
+
+
             /* Mission Swipe Cards */
             .swipe-container {
                 position: relative;
@@ -3030,6 +3088,122 @@
   pointer-events: none;
 }
 
+/* === Mobile Responsiveness Overrides === */
+@media (max-width: 768px) {
+  /* Space Academy */
+  .space-academy {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px 16px;
+  }
+  .academy-card {
+    margin: 0;
+  }
+  .academy-header {
+    padding: 20px 20px 0;
+  }
+  .academy-content {
+    padding: 16px 20px 20px;
+  }
+  .academy-badge {
+    width: 44px;
+    height: 44px;
+    top: 16px;
+    right: 16px;
+    font-size: 1.3rem;
+  }
+  .academy-institution {
+    font-size: 1.25rem !important;
+    padding-right: 44px;
+  }
+  .academy-degree {
+    font-size: 0.85rem !important;
+  }
+
+  /* Contact Uplink */
+  .contact-uplink {
+    padding: 24px;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Bento Grid Spans reset */
+  .bento-item.large {
+    grid-column: span 1 !important;
+  }
+  .bento-item.tall {
+    grid-row: span 1 !important;
+  }
+
+  /* Terminal text resize */
+  .terminal-body {
+    padding: 16px;
+    font-size: 0.85rem;
+  }
+
+  /* Section title subheadings */
+  #about h4, #operational-successes h4 {
+    font-size: 0.85rem !important;
+    letter-spacing: 0.2em !important;
+  }
+
+  /* Modals resizing */
+  .modal-overlay {
+    padding: 10px;
+  }
+  .modal-content {
+    border-radius: 16px;
+  }
+  .modal-header {
+    padding: 16px 16px 0;
+  }
+  .modal-body {
+    padding: 16px;
+  }
+  .modal-title {
+    font-size: 1.4rem;
+  }
+  .modal-footer {
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Hex Cards (Achievements) */
+  .hex-card {
+    width: 100% !important;
+    max-width: 320px;
+  }
+
+  /* Skills Planet Grid items spacing */
+  .skill-planet {
+    padding: 12px;
+    border-radius: 16px;
+  }
+  .skill-planet-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+  }
+  .skill-planet-icon img {
+    width: 24px;
+    height: 24px;
+  }
+  .skill-planet-name {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Telescope ring resize */
+  .telescope-ring {
+    width: 280px;
+    height: 280px;
+  }
+}
+
 </style>
     </head>
     <body>
@@ -3139,7 +3313,7 @@
             <div data-aos="fade-up" data-aos-duration="1500">
                 <h2 class="text-white text-2xl md:text-4xl font-extrabold mb-2 opacity-80 uppercase tracking-[0.2em]">Hello! I'm</h2>
                 
-                <h1 id="scramble-name" class="text-5xl md:text-8xl font-black mb-4 tracking-tighter uppercase text-gradient">
+                <h1 id="scramble-name" class="text-3xl sm:text-5xl md:text-8xl font-black mb-4 tracking-tighter uppercase text-gradient">
                     KUMARAN AADHIRAI AZHAGAN S
                 </h1>
                 
@@ -3147,7 +3321,7 @@
                     <span class="tagline-scramble text-white text-xl md:text-3xl font-bold uppercase tracking-[0.3em]" id="tagline-scramble">
                         - Aerospace Engineer -
                     </span>
-                    <div class="text-sky-400 text-lg md:text-xl font-medium tracking-widest uppercase h-[30px]">
+                    <div class="text-sky-400 text-sm md:text-xl font-medium tracking-widest uppercase min-h-[40px] md:h-[30px] flex items-center justify-center">
                         <span id="typewriter"></span>
                     </div>
                 </div>
@@ -3180,7 +3354,7 @@
             </div>
 
             <h4 class="text-lg font-black uppercase tracking-[0.4em] text-purple-500 mb-4 flex items-center justify-center gap-3">
-                <i class="fas fa-user-astronaut"></i> SPACE ACADEMY <i class="fas fa-user-graduate"></i>
+                <i class="fas fa-user-astronaut"></i> ACADEMIC LAUNCHPAD <i class="fas fa-user-graduate"></i>
             </h4>
             <p class="text-gray-500 text-sm mb-8 text-center">Training grounds that prepared me for liftoff</p>
             
@@ -3188,7 +3362,7 @@
             <div class="space-academy mb-16">
                 
                 <!-- Card 1: Higher Secondary -->
-                <div class="academy-card" data-aos="fade-up" data-aos-duration="300" style="--card-color: #a855f7; --card-color-alt: #7c3aed;">
+                <a href="https://www.srvschoolstrichy.org/" target="_blank" rel="noopener noreferrer" class="academy-card block" data-aos="fade-up" data-aos-duration="300" style="--card-color: #a855f7; --card-color-alt: #7c3aed;">
                     <div class="academy-badge">🎓</div>
                     <div class="academy-header">
                         <div class="academy-years">
@@ -3205,26 +3379,17 @@
                         <div class="academy-institution">SRV Higher Secondary School</div>
                         <div class="academy-degree">
                             <i class="fas fa-certificate"></i>
-                            Higher Secondary • Science Stream
+                            Science Stream
                         </div>
                         <div class="academy-location">
                             <i class="fas fa-map-marker-alt"></i>
                             Trichy, Tamil Nadu
                         </div>
                     </div>
-                    <div class="academy-footer">
-                        <span class="academy-tag">PCM</span>
-                        <div class="academy-progress">
-                            <div class="academy-progress-bar">
-                                <div class="academy-progress-fill" style="width: 100%;"></div>
-                            </div>
-                            <span class="academy-progress-text">100%</span>
-                        </div>
-                    </div>
-                </div>
+                </a>
                 
                 <!-- Card 2: B.Tech -->
-                <div class="academy-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="300" style="--card-color: #38bdf8; --card-color-alt: #0ea5e9;">
+                <a href="https://hindustanuniv.ac.in/" target="_blank" rel="noopener noreferrer" class="academy-card block" data-aos="fade-up" data-aos-duration="300" style="--card-color: #38bdf8; --card-color-alt: #0ea5e9;">
                     <div class="academy-badge">🚀</div>
                     <div class="academy-header">
                         <div class="academy-years">
@@ -3232,9 +3397,9 @@
                             <span class="academy-arrow">→</span>
                             <span class="academy-year">2026</span>
                         </div>
-                        <div class="academy-status ongoing">
+                        <div class="academy-status complete">
                             <span class="academy-status-dot"></span>
-                            In Progress
+                            Graduated
                         </div>
                     </div>
                     <div class="academy-content">
@@ -3248,194 +3413,9 @@
                             Chennai, Tamil Nadu
                         </div>
                     </div>
-                    <div class="academy-footer">
-                        <span class="academy-tag">Aerospace</span>
-                        <div class="academy-progress">
-                            <div class="academy-progress-bar">
-                                <div class="academy-progress-fill" style="width: 87%;"></div>
-                            </div>
-                            <span class="academy-progress-text">87%</span>
-                        </div>
-                    </div>
-                </div>
+                </a>
             </div>
 
-            <h4 class="text-lg font-black uppercase tracking-[0.4em] text-sky-500 mb-4 flex items-center justify-center gap-3">
-                <i class="fas fa-trophy"></i> OPERATIONAL SUCCESSES <i class="fas fa-trophy"></i>
-            </h4>
-            <p class="text-gray-500 text-sm mb-8 text-center">Achievements that launched me to new heights</p>
-            
-            <!-- WORLD RECORD ACHIEVEMENT -->
-            <div class="world-record-showcase mb-16" data-aos="fade-up" data-aos-duration="1000">
-                <div class="wr-stage">
-                    <!-- Header -->
-                    <div class="wr-header">
-                        <div class="wr-header-left">
-                            <div class="wr-trophy">
-                                <i class="fas fa-medal"></i>
-                            </div>
-                            <div class="wr-header-text">
-                                <div class="wr-header-title"><i class="fas fa-globe-americas"></i> International Book of Records • 2025</div>
-                            </div>
-                            <h3 class="wr-main-title"><span>Smallest</span> & <span>Lightest</span> Atmospheric Sensing Satellite Created</h3>
-                        </div>
-                    </div>
-                    
-                    <!-- Main content - Details left, Certificate right -->
-                    <div class="wr-content">
-                        <!-- Left - Details -->
-                        <div class="wr-details">
-                            <h3 class="wr-title">Smallest & Lightest Atmospheric Sensing Satellite Created</h3>
-                            <div class="wr-org">International Book of Records</div>
-                            
-                            <!-- Specs -->
-                            <div class="wr-specs">
-                                <div class="wr-spec">
-                                    <div class="wr-spec-val">17×17×20</div>
-                                    <div class="wr-spec-label">mm Dimensions</div>
-                                </div>
-                                <div class="wr-spec">
-                                    <div class="wr-spec-val">7g</div>
-                                    <div class="wr-spec-label">Mass</div>
-                                </div>
-                                <div class="wr-spec">
-                                    <div class="wr-spec-val">2025</div>
-                                    <div class="wr-spec-label">Year</div>
-                                </div>
-                            </div>
-                            
-                            <!-- Capabilities -->
-                            <div class="wr-caps">
-                                <div class="wr-cap">
-                                    <div class="wr-cap-icon"><i class="fas fa-compass"></i></div>
-                                    <div class="wr-cap-content">
-                                        <div class="wr-cap-title">9-DOF Navigation & Attitude Tracking</div>
-                                        <div class="wr-cap-desc">Custom Sensor Fusion algorithms processing raw IMU data for real-time Pitch, Roll & Yaw</div>
-                                    </div>
-                                </div>
-                                <div class="wr-cap">
-                                    <div class="wr-cap-icon"><i class="fas fa-location-arrow"></i></div>
-                                    <div class="wr-cap-content">
-                                        <div class="wr-cap-title">Precise Directional Heading</div>
-                                        <div class="wr-cap-desc">Trigonometric algorithms converting magnetic field data into 8-way cardinal direction output</div>
-                                    </div>
-                                </div>
-                                <div class="wr-cap">
-                                    <div class="wr-cap-icon"><i class="fas fa-broadcast-tower"></i></div>
-                                    <div class="wr-cap-content">
-                                        <div class="wr-cap-title">Environmental Telemetry</div>
-                                        <div class="wr-cap-desc">Continuous measurement of Temperature, Humidity, Atmospheric Pressure, Altitude & Air Quality</div>
-                                    </div>
-                                </div>
-                                <div class="wr-cap">
-                                    <div class="wr-cap-icon"><i class="fas fa-sun"></i></div>
-                                    <div class="wr-cap-content">
-                                        <div class="wr-cap-title">Intelligent Weather Inference</div>
-                                        <div class="wr-cap-desc">LDR analysis to infer and broadcast weather state: Sunny, Cloudy, Rainy, or Night</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Right - Certificate -->
-                        <div class="wr-cert">
-                            <div class="wr-cert-frame">
-                                <div class="wr-cert-inner">
-                                    <img src="certificate.jpg" alt="International Book of Records Certificate" class="gallery-thumb" data-caption="International Book of Records - World's Smallest Atmospheric Sensing Satellite">
-                                    <div class="wr-cert-shine"></div>
-                                </div>
-                                <div class="wr-cert-badge">
-                                    <i class="fas fa-award"></i>
-                                    <span>Official</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Footer -->
-                    <div class="wr-footer">
-                        <a href="https://www.internationalbookofrecords.com/records/smallest-and-lightest-atmospheric-sensing-satellite-created/" target="_blank" class="wr-btn">
-                            <span>View Official Record</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Hexagon Grid Achievements -->
-            <div class="hex-grid">
-                <!-- NASA CanSat -->
-                <div class="hex-card" data-aos="zoom-in" style="--hex-color: #f59e0b;">
-                    <div class="hex-badge" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">
-                        <i class="fas fa-flag-usa"></i> NASA Competition
-                    </div>
-                    <h5 class="text-xl font-black text-white mb-3 uppercase">AAS NASA CanSat</h5>
-                    <p class="text-gray-400 text-sm leading-relaxed">Excellence in payload design, telemetry systems, and autonomous descent control mechanisms.</p>
-                    <div class="hex-stats">
-                        <div class="hex-stat">
-                            <div class="hex-stat-value" style="color: #f59e0b;">6th</div>
-                            <div class="hex-stat-label">National</div>
-                        </div>
-                        <div class="hex-stat">
-                            <div class="hex-stat-value" style="color: #f59e0b;">25th</div>
-                            <div class="hex-stat-label">Global</div>
-                        </div>
-                        <div class="hex-stat">
-                            <div class="hex-stat-value" style="color: #f59e0b;">2024</div>
-                            <div class="hex-stat-label">Year</div>
-                        </div>
-                    </div>
-                    <span class="hex-number">6</span>
-                </div>
-
-                <!-- UNAM CanSat -->
-                <div class="hex-card" data-aos="zoom-in" data-aos-delay="100" style="--hex-color: #fbbf24;">
-                    <div class="hex-badge" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24;">
-                        <i class="fas fa-crown"></i> Global Champion
-                    </div>
-                    <h5 class="text-xl font-black text-white mb-3 uppercase">UNAM CanSat</h5>
-                    <p class="text-gray-400 text-sm leading-relaxed">Outstanding system integration and innovation in CanSat engineering across 120 international teams.</p>
-                    <div class="hex-stats">
-                        <div class="hex-stat">
-                            <div class="hex-stat-value" style="color: #fbbf24;">1st</div>
-                            <div class="hex-stat-label">Global Rank</div>
-                        </div>
-                        <div class="hex-stat">
-                            <div class="hex-stat-value" style="color: #fbbf24;">120</div>
-                            <div class="hex-stat-label">Teams</div>
-                        </div>
-                        <div class="hex-stat">
-                            <div class="hex-stat-value" style="color: #fbbf24;">2024</div>
-                            <div class="hex-stat-label">Year</div>
-                        </div>
-                    </div>
-                    <span class="hex-number">1</span>
-                </div>
-
-                <!-- Zooniverse Citizen Science -->
-                <div class="hex-card" data-aos="zoom-in" data-aos-delay="200" style="--hex-color: #818cf8;">
-                    <div class="hex-badge" style="background: rgba(129, 140, 248, 0.2); color: #818cf8;">
-                        <i class="fas fa-microscope"></i> Citizen Science
-                    </div>
-                    <h5 class="text-xl font-black text-white mb-3 uppercase">Zooniverse Contributor</h5>
-                    <p class="text-gray-400 text-sm leading-relaxed">Contributed to real scientific research by classifying galaxies, exoplanets, and astronomical data on the Zooniverse platform.</p>
-                    <div class="hex-stats">
-                        <div class="hex-stat">
-                            <div class="hex-stat-value" style="color: #818cf8;">2.3K+</div>
-                            <div class="hex-stat-label">Classified</div>
-                        </div>
-                        <div class="hex-stat">
-                            <div class="hex-stat-value" style="color: #818cf8;">🔭</div>
-                            <div class="hex-stat-label">Projects</div>
-                        </div>
-                        <div class="hex-stat">
-                            <div class="hex-stat-value" style="color: #818cf8;">2025</div>
-                            <div class="hex-stat-label">Year</div>
-                        </div>
-                    </div>
-                    <span class="hex-number">★</span>
-                </div>
-            </div>
         </section>
 
         <section id="experience" class="py-20 px-6 md:px-10 max-w-5xl mx-auto text-white">
@@ -3666,118 +3646,275 @@
             <h3 class="text-3xl font-black mb-4 uppercase text-center tracking-[0.3em] text-white">Tech Arsenal <i class="fas fa-microchip text-sky-400"></i></h3>
             <p class="text-gray-500 text-center text-sm mb-12">Hover to explore my engineering toolkit</p>
             
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8" id="skills-filter-tabs" data-aos="fade-up">
+                <button class="filter-tab active" data-filter="all">All</button>
+                <button class="filter-tab" data-filter="programming">Programming</button>
+                <button class="filter-tab" data-filter="cad">CAD</button>
+                <button class="filter-tab" data-filter="aerospace">Analysis</button>
+            </div>
+            
             <div class="skills-galaxy-wrapper" data-aos="fade-up">
                 <div class="skills-galaxy">
                     <!-- MATLAB -->
-                    <div class="skill-planet" style="--skill-color: #38bdf8; --skill-color-alt: #0ea5e9; --skill-level: 90%;">
-                        <span class="skill-planet-percent">90%</span>
+                    <div class="skill-planet" data-category="programming" style="--skill-color: #38bdf8; --skill-color-alt: #0ea5e9; --delay: 0s;">
+                        <div class="blueprint-grid"></div>
                         <div class="skill-planet-icon">
                             <img src="matlab.jpg" alt="MATLAB - Mathematical computing software" loading="lazy">
                         </div>
                         <span class="skill-planet-name">MATLAB</span>
-                        <div class="skill-planet-ring" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="MATLAB proficiency 90%">
-                            <div class="skill-planet-fill"></div>
-                        </div>
                     </div>
                     <!-- Ansys STK -->
-                    <div class="skill-planet" style="--skill-color: #818cf8; --skill-color-alt: #6366f1; --skill-level: 85%;">
-                        <span class="skill-planet-percent">85%</span>
+                    <div class="skill-planet" data-category="aerospace" style="--skill-color: #818cf8; --skill-color-alt: #6366f1; --delay: 1.2s;">
+                        <div class="blueprint-grid"></div>
                         <div class="skill-planet-icon">
                             <img src="ansysstk.jpg" alt="Ansys STK - Satellite mission analysis" loading="lazy">
                         </div>
                         <span class="skill-planet-name">Ansys STK</span>
-                        <div class="skill-planet-ring" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Ansys STK proficiency 85%">
-                            <div class="skill-planet-fill"></div>
-                        </div>
                     </div>
                     <!-- SolidWorks -->
-                    <div class="skill-planet" style="--skill-color: #a855f7; --skill-color-alt: #7c3aed; --skill-level: 88%;">
-                        <span class="skill-planet-percent">88%</span>
+                    <div class="skill-planet" data-category="cad" style="--skill-color: #a855f7; --skill-color-alt: #7c3aed; --delay: 2.4s;">
+                        <div class="blueprint-grid"></div>
                         <div class="skill-planet-icon">
                             <img src="solidworks.jpg" alt="SolidWorks - 3D CAD modeling" loading="lazy">
                         </div>
                         <span class="skill-planet-name">SolidWorks</span>
-                        <div class="skill-planet-ring" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="SolidWorks proficiency 88%">
-                            <div class="skill-planet-fill"></div>
-                        </div>
                     </div>
                     <!-- AutoCAD -->
-                    <div class="skill-planet" style="--skill-color: #ec4899; --skill-color-alt: #db2777; --skill-level: 80%;">
-                        <span class="skill-planet-percent">80%</span>
+                    <div class="skill-planet" data-category="cad" style="--skill-color: #ec4899; --skill-color-alt: #db2777; --delay: 0.6s;">
+                        <div class="blueprint-grid"></div>
                         <div class="skill-planet-icon">
                             <img src="autocad.jpg" alt="AutoCAD - CAD and drafting" loading="lazy">
                         </div>
                         <span class="skill-planet-name">AutoCAD</span>
-                        <div class="skill-planet-ring" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="AutoCAD proficiency 80%">
-                            <div class="skill-planet-fill"></div>
-                        </div>
                     </div>
                     <!-- GMAT -->
-                    <div class="skill-planet" style="--skill-color: #f59e0b; --skill-color-alt: #d97706; --skill-level: 75%;">
-                        <span class="skill-planet-percent">75%</span>
+                    <div class="skill-planet" data-category="aerospace" style="--skill-color: #f59e0b; --skill-color-alt: #d97706; --delay: 1.8s;">
+                        <div class="blueprint-grid"></div>
                         <div class="skill-planet-icon">
                             <img src="gmat.jpg" alt="GMAT - Mission Analysis Tool" loading="lazy">
                         </div>
                         <span class="skill-planet-name">GMAT</span>
-                        <div class="skill-planet-ring" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="GMAT proficiency 75%">
-                            <div class="skill-planet-fill"></div>
-                        </div>
                     </div>
                     <!-- Arduino -->
-                    <div class="skill-planet" style="--skill-color: #22c55e; --skill-color-alt: #16a34a; --skill-level: 92%;">
-                        <span class="skill-planet-percent">92%</span>
+                    <div class="skill-planet" data-category="programming" style="--skill-color: #22c55e; --skill-color-alt: #16a34a; --delay: 3s;">
+                        <div class="blueprint-grid"></div>
                         <div class="skill-planet-icon">
                             <img src="arduino.jpg" alt="Arduino IDE - Embedded systems" loading="lazy">
                         </div>
                         <span class="skill-planet-name">Arduino</span>
-                        <div class="skill-planet-ring" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Arduino proficiency 92%">
-                            <div class="skill-planet-fill"></div>
-                        </div>
                     </div>
                     <!-- Fusion 360 -->
-                    <div class="skill-planet" style="--skill-color: #f97316; --skill-color-alt: #ea580c; --skill-level: 85%;">
-                        <span class="skill-planet-percent">85%</span>
+                    <div class="skill-planet" data-category="cad" style="--skill-color: #f97316; --skill-color-alt: #ea580c; --delay: 1.5s;">
+                        <div class="blueprint-grid"></div>
                         <div class="skill-planet-icon">
                             <img src="fusion360.jpg" alt="Fusion 360 - Cloud CAD/CAM" loading="lazy">
                         </div>
                         <span class="skill-planet-name">Fusion 360</span>
-                        <div class="skill-planet-ring" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Fusion 360 proficiency 85%">
-                            <div class="skill-planet-fill"></div>
-                        </div>
                     </div>
                     <!-- Astrometrica -->
-                    <div class="skill-planet" style="--skill-color: #eab308; --skill-color-alt: #ca8a04; --skill-level: 78%;">
-                        <span class="skill-planet-percent">78%</span>
+                    <div class="skill-planet" data-category="aerospace" style="--skill-color: #eab308; --skill-color-alt: #ca8a04; --delay: 2.7s;">
+                        <div class="blueprint-grid"></div>
                         <div class="skill-planet-icon">
                             <img src="astrometrica.jpg" alt="Astrometrica - Asteroid detection" loading="lazy">
                         </div>
                         <span class="skill-planet-name">Astrometrica</span>
-                        <div class="skill-planet-ring" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-label="Astrometrica proficiency 78%">
-                            <div class="skill-planet-fill"></div>
-                        </div>
                     </div>
                     <!-- Python -->
-                    <div class="skill-planet" style="--skill-color: #3b82f6; --skill-color-alt: #2563eb; --skill-level: 88%;">
-                        <span class="skill-planet-percent">88%</span>
+                    <div class="skill-planet" data-category="programming" style="--skill-color: #3b82f6; --skill-color-alt: #2563eb; --delay: 0.3s;">
+                        <div class="blueprint-grid"></div>
                         <div class="skill-planet-icon">
                             <img src="python.jpg" alt="Python - Scientific computing" loading="lazy">
                         </div>
                         <span class="skill-planet-name">Python</span>
-                        <div class="skill-planet-ring" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Python proficiency 88%">
-                            <div class="skill-planet-fill"></div>
-                        </div>
                     </div>
                     <!-- TinkerCAD -->
-                    <div class="skill-planet" style="--skill-color: #d946ef; --skill-color-alt: #c026d3; --skill-level: 82%;">
-                        <span class="skill-planet-percent">82%</span>
+                    <div class="skill-planet" data-category="cad" style="--skill-color: #d946ef; --skill-color-alt: #c026d3; --delay: 2.1s;">
+                        <div class="blueprint-grid"></div>
                         <div class="skill-planet-icon">
                             <img src="tinkercad.jpg" alt="TinkerCAD - 3D design tool" loading="lazy">
                         </div>
                         <span class="skill-planet-name">TinkerCAD</span>
-                        <div class="skill-planet-ring" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="TinkerCAD proficiency 82%">
-                            <div class="skill-planet-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="operational-successes" class="py-20 px-10 max-w-6xl mx-auto text-center">
+            <h4 class="text-lg font-black uppercase tracking-[0.4em] text-sky-500 mb-4 flex items-center justify-center gap-3">
+                <i class="fas fa-trophy"></i> OPERATIONAL SUCCESSES <i class="fas fa-trophy"></i>
+            </h4>
+            <p class="text-gray-500 text-sm mb-8 text-center">Achievements that launched me to new heights</p>
+            
+            <!-- WORLD RECORD ACHIEVEMENT -->
+            <div class="world-record-showcase mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <div class="wr-stage">
+                    <!-- Header -->
+                    <div class="wr-header">
+                        <div class="wr-header-left">
+                            <div class="wr-trophy">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="wr-header-text">
+                                <div class="wr-header-title"><i class="fas fa-globe-americas"></i> International Book of Records • 2025</div>
+                            </div>
+                            <h3 class="wr-main-title"><span>Smallest</span> & <span>Lightest</span> Atmospheric Sensing Satellite Created</h3>
                         </div>
                     </div>
+                    
+                    <!-- Main content - Details left, Certificate right -->
+                    <div class="wr-content">
+                        <!-- Left - Details -->
+                        <div class="wr-details">
+                            <h3 class="wr-title">Smallest & Lightest Atmospheric Sensing Satellite Created</h3>
+                            <div class="wr-org">International Book of Records</div>
+                            
+                            <!-- Specs -->
+                            <div class="wr-specs">
+                                <div class="wr-spec">
+                                    <div class="wr-spec-val">17×17×20</div>
+                                    <div class="wr-spec-label">mm</div>
+                                </div>
+                                <div class="wr-spec">
+                                    <div class="wr-spec-val">7g</div>
+                                    <div class="wr-spec-label">Mass</div>
+                                </div>
+                                <div class="wr-spec">
+                                    <div class="wr-spec-val">2025</div>
+                                    <div class="wr-spec-label">Year</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Capabilities -->
+                            <div class="wr-caps">
+                                <div class="wr-cap">
+                                    <div class="wr-cap-icon"><i class="fas fa-compass"></i></div>
+                                    <div class="wr-cap-content">
+                                        <div class="wr-cap-title">9-DOF Navigation & Attitude Tracking</div>
+                                        <div class="wr-cap-desc">Custom Sensor Fusion algorithms processing raw IMU data for real-time Pitch, Roll & Yaw</div>
+                                    </div>
+                                </div>
+                                <div class="wr-cap">
+                                    <div class="wr-cap-icon"><i class="fas fa-location-arrow"></i></div>
+                                    <div class="wr-cap-content">
+                                        <div class="wr-cap-title">Precise Directional Heading</div>
+                                        <div class="wr-cap-desc">Trigonometric algorithms converting magnetic field data into 8-way cardinal direction output</div>
+                                    </div>
+                                </div>
+                                <div class="wr-cap">
+                                    <div class="wr-cap-icon"><i class="fas fa-broadcast-tower"></i></div>
+                                    <div class="wr-cap-content">
+                                        <div class="wr-cap-title">Environmental Telemetry</div>
+                                        <div class="wr-cap-desc">Continuous measurement of Temperature, Humidity, Atmospheric Pressure, Altitude & Air Quality</div>
+                                    </div>
+                                </div>
+                                <div class="wr-cap">
+                                    <div class="wr-cap-icon"><i class="fas fa-sun"></i></div>
+                                    <div class="wr-cap-content">
+                                        <div class="wr-cap-title">Intelligent Weather Inference</div>
+                                        <div class="wr-cap-desc">LDR analysis to infer and broadcast weather state: Sunny, Cloudy, Rainy, or Night</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right - Certificate -->
+                        <div class="wr-cert">
+                            <div class="wr-cert-frame">
+                                <div class="wr-cert-inner">
+                                    <img src="certificate.jpg" alt="International Book of Records Certificate" class="gallery-thumb" data-caption="International Book of Records - World's Smallest Atmospheric Sensing Satellite">
+                                    <div class="wr-cert-shine"></div>
+                                </div>
+                                <div class="wr-cert-badge">
+                                    <i class="fas fa-award"></i>
+                                    <span>Official</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Footer -->
+                    <div class="wr-footer">
+                        <a href="https://www.internationalbookofrecords.com/records/smallest-and-lightest-atmospheric-sensing-satellite-created/" target="_blank" class="wr-btn">
+                            <span>View Official Record</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hexagon Grid Achievements -->
+            <div class="hex-grid">
+                <!-- NASA CanSat -->
+                <div class="hex-card" data-aos="zoom-in" style="--hex-color: #f59e0b;">
+                    <div class="hex-badge" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">
+                        <i class="fas fa-flag-usa"></i> NASA Competition
+                    </div>
+                    <h5 class="text-xl font-black text-white mb-3 uppercase">AAS NASA CanSat</h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">Excellence in payload design, telemetry systems, and autonomous descent control mechanisms.</p>
+                    <div class="hex-stats">
+                        <div class="hex-stat">
+                            <div class="hex-stat-value" style="color: #f59e0b;">6th</div>
+                            <div class="hex-stat-label">National</div>
+                        </div>
+                        <div class="hex-stat">
+                            <div class="hex-stat-value" style="color: #f59e0b;">25th</div>
+                            <div class="hex-stat-label">Global</div>
+                        </div>
+                        <div class="hex-stat">
+                            <div class="hex-stat-value" style="color: #f59e0b;">2024</div>
+                            <div class="hex-stat-label">Year</div>
+                        </div>
+                    </div>
+                    <span class="hex-number">6</span>
+                </div>
+
+                <!-- UNAM CanSat -->
+                <div class="hex-card" data-aos="zoom-in" data-aos-delay="100" style="--hex-color: #fbbf24;">
+                    <div class="hex-badge" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24;">
+                        <i class="fas fa-crown"></i> Global Champion
+                    </div>
+                    <h5 class="text-xl font-black text-white mb-3 uppercase">UNAM CanSat</h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">Outstanding system integration and innovation in CanSat engineering across 120 international teams.</p>
+                    <div class="hex-stats">
+                        <div class="hex-stat">
+                            <div class="hex-stat-value" style="color: #fbbf24;">1st</div>
+                            <div class="hex-stat-label">Global Rank</div>
+                        </div>
+                        <div class="hex-stat">
+                            <div class="hex-stat-value" style="color: #fbbf24;">120</div>
+                            <div class="hex-stat-label">Teams</div>
+                        </div>
+                        <div class="hex-stat">
+                            <div class="hex-stat-value" style="color: #fbbf24;">2024</div>
+                            <div class="hex-stat-label">Year</div>
+                        </div>
+                    </div>
+                    <span class="hex-number">1</span>
+                </div>
+
+                <!-- Zooniverse Citizen Science -->
+                <div class="hex-card" data-aos="zoom-in" data-aos-delay="200" style="--hex-color: #818cf8;">
+                    <div class="hex-badge" style="background: rgba(129, 140, 248, 0.2); color: #818cf8;">
+                        <i class="fas fa-microscope"></i> Citizen Science
+                    </div>
+                    <h5 class="text-xl font-black text-white mb-3 uppercase">Zooniverse Contributor</h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">Contributed to real scientific research by classifying galaxies, exoplanets, and astronomical data on the Zooniverse platform.</p>
+                    <div class="hex-stats">
+                        <div class="hex-stat">
+                            <div class="hex-stat-value" style="color: #818cf8;">2.3K+</div>
+                            <div class="hex-stat-label">Classified</div>
+                        </div>
+                        <div class="hex-stat">
+                            <div class="hex-stat-value" style="color: #818cf8;">🔭</div>
+                            <div class="hex-stat-label">Projects</div>
+                        </div>
+                        <div class="hex-stat">
+                            <div class="hex-stat-value" style="color: #818cf8;">2025</div>
+                            <div class="hex-stat-label">Year</div>
+                        </div>
+                    </div>
+                    <span class="hex-number">★</span>
                 </div>
             </div>
         </section>
@@ -3920,6 +4057,34 @@
                 </div>
             </div>
             <div class="status-right">
+                <!-- Celestial Sky Map Tracker -->
+                <div class="status-item cursor-pointer relative group" id="celestial-tracker">
+                    <span class="status-label">SKY</span>
+                    <span class="status-value" id="current-sky-location">CHENNAI</span>
+                    
+                    <!-- Floating HUD Panel -->
+                    <div class="absolute right-0 top-full mt-2 w-[220px] glass-card rounded-2xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[99999] border border-sky-500/30 text-left cursor-default flex flex-col gap-3">
+                        <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                            <span class="text-[9px] font-black tracking-widest text-sky-400">CELESTIAL TRACKER</span>
+                        </div>
+                        <!-- Sky Map Circle -->
+                        <div class="flex justify-center my-1 relative">
+                            <canvas id="sky-map-canvas" width="160" height="160" class="border border-sky-500/20 rounded-full bg-black/40"></canvas>
+                            <!-- Compass labels -->
+                            <span class="absolute top-1 text-[7px] text-gray-500 font-bold pointer-events-none">N</span>
+                            <span class="absolute bottom-1 text-[7px] text-gray-500 font-bold pointer-events-none">S</span>
+                            <span class="absolute left-1.5 top-1/2 -translate-y-1/2 text-[7px] text-gray-500 font-bold pointer-events-none">E</span>
+                            <span class="absolute right-1.5 top-1/2 -translate-y-1/2 text-[7px] text-gray-500 font-bold pointer-events-none">W</span>
+                        </div>
+                        <!-- Telemetry readout -->
+                        <div class="flex flex-col gap-1 text-[8px] font-mono text-gray-400">
+                            <div class="flex justify-between"><span>LAT/LON:</span><span class="text-sky-300 font-bold" id="sky-coords-val">13.08°N / 80.27°E</span></div>
+                            <div class="flex justify-between"><span>VISIBLE:</span><span class="text-indigo-300 font-bold truncate max-w-[120px]" id="sky-visible-const">Orion, Crux</span></div>
+                            <div class="flex justify-between"><span>LST TIME:</span><span class="text-fuchsia-300 font-bold" id="sky-lst-val">12:34:56</span></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="iss-tracker">
                     <span class="iss-icon">🛰️</span>
                     <span class="status-label">ISS</span>
@@ -4200,14 +4365,14 @@
             const terminalData = {
                 command: 'kumaran@aerospace:~$ ./load_identity.sh',
                 bootSequence: [
-                    { text: '[BOOT] Starting AEROSPACE_CORE v4.2.1...', delay: 60, isSystem: true },
-                    { text: '[INIT] Mounting /dev/dreams...', delay: 50, isSystem: true },
-                    { text: '[LOAD] Importing passion_modules.ko...', delay: 45, isSystem: true },
-                    { text: '[SYNC] Syncing with orbital_database...', delay: 55, isSystem: true },
-                    { text: '[AUTH] Verifying aerospace credentials... OK', delay: 40, isSystem: true },
-                    { text: '[DECRYPT] Decrypting biography.enc...', delay: 50, isSystem: true },
-                    { text: '[OK] All systems nominal. Ready for output.', delay: 35, isSystem: true },
-                    { text: '════════════════════════════════════════════', delay: 20, isSystem: true },
+                    { text: '[BOOT] Starting AEROSPACE_CORE v4.2.1...', delay: 30, isSystem: true },
+                    { text: '[INIT] Mounting /dev/dreams...', delay: 25, isSystem: true },
+                    { text: '[LOAD] Importing passion_modules.ko...', delay: 20, isSystem: true },
+                    { text: '[SYNC] Syncing with orbital_database...', delay: 25, isSystem: true },
+                    { text: '[AUTH] Verifying aerospace credentials... OK', delay: 20, isSystem: true },
+                    { text: '[DECRYPT] Decrypting biography.enc...', delay: 25, isSystem: true },
+                    { text: '[OK] All systems nominal. Ready for output.', delay: 15, isSystem: true },
+                    { text: '════════════════════════════════════════════', delay: 10, isSystem: true },
                 ],
                 lines: [
                     { prompt: '$', text: "An {{aerospace engineering student}} fascinated by how {{math escapes Earth}}.", hasMargin: false },
@@ -4264,8 +4429,8 @@
                 const outputEl = document.getElementById('terminal-output');
                 
                 // Type the command first
-                await typeText(commandEl, terminalData.command, 55);
-                await new Promise(r => setTimeout(r, 500));
+                await typeText(commandEl, terminalData.command, 30);
+                await new Promise(r => setTimeout(r, 300));
 
                 // Boot sequence
                 for (const boot of terminalData.bootSequence) {
@@ -4275,10 +4440,10 @@
                     line.style.fontSize = '0.75rem';
                     outputEl.appendChild(line);
                     await typeText(line, boot.text, boot.delay);
-                    await new Promise(r => setTimeout(r, 250));
+                    await new Promise(r => setTimeout(r, 100));
                 }
 
-                await new Promise(r => setTimeout(r, 600));
+                await new Promise(r => setTimeout(r, 300));
 
                 // Main content lines
                 for (const lineData of terminalData.lines) {
@@ -4296,7 +4461,7 @@
                     line.appendChild(textSpan);
                     outputEl.appendChild(line);
                     
-                    await typeHTML(textSpan, lineData.text, 30);
+                    await typeHTML(textSpan, lineData.text, 15);
                     
                     if (lineData.isFinal) {
                         const cursor = document.createElement('span');
@@ -4304,7 +4469,7 @@
                         textSpan.appendChild(cursor);
                     }
                     
-                    await new Promise(r => setTimeout(r, 200));
+                    await new Promise(r => setTimeout(r, 100));
                 }
             }
 
@@ -4456,7 +4621,7 @@
             // Create real satellites
             realSatellites.forEach(data => satellites.push(createRealSatellite(data)));
             
-            // Add generic satellites for visual density (300 satellites - optimized)
+            // Add generic satellites for visual density (500 satellites - optimized)
             function createGenericSatellite() {
                 const group = new THREE.Group();
                 const bus = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 1.0, 6), satMat);
@@ -4467,10 +4632,10 @@
                 scene.add(group);
                 return { mesh: group, r: 50 + Math.random() * 200, s: 0.0001 + Math.random() * 0.001, t: (Math.random() - 0.5) * Math.PI * 1.8, angle: Math.random() * Math.PI * 2, name: null };
             }
-            for(let i=0; i<300; i++) satellites.push(createGenericSatellite());
+            for(let i=0; i<500; i++) satellites.push(createGenericSatellite());
             
-            // Add more Starlink train satellites (40 total)
-            for(let i=6; i<=45; i++) {
+            // Add more Starlink train satellites (60 total)
+            for(let i=6; i<=65; i++) {
                 satellites.push(createRealSatellite({ 
                     name: 'Starlink-' + i, type: 'starlink', r: 52 + Math.random() * 8, 
                     s: 0.0013 + Math.random() * 0.0003, inc: (i % 3 === 0 ? 0.93 : i % 3 === 1 ? -0.93 : 0.5), 
@@ -4478,16 +4643,16 @@
                 }));
             }
             
-            // Add OneWeb satellites (20 total)
-            for(let i=1; i<=20; i++) {
+            // Add OneWeb satellites (40 total)
+            for(let i=1; i<=40; i++) {
                 satellites.push(createRealSatellite({ 
                     name: 'OneWeb-' + i, type: 'starlink', r: 58 + Math.random() * 5, s: 0.0011 + Math.random() * 0.0002, 
                     inc: 1.5, size: 0.5, color: 0x22c55e, offset: i * 0.3 
                 }));
             }
             
-            // Add Iridium constellation (24 satellites)
-            for(let i=1; i<=24; i++) {
+            // Add Iridium constellation (40 total)
+            for(let i=1; i<=40; i++) {
                 satellites.push(createRealSatellite({ 
                     name: 'Iridium-' + i, type: 'geo', r: 55 + (i % 6) * 2, s: 0.0012, 
                     inc: 1.45, size: 0.7, color: 0xf59e0b, offset: i * 0.26 
@@ -4506,6 +4671,7 @@
             function animate() {
                 requestAnimationFrame(animate);
                 earth.rotation.y += 0.003;
+                
                 satellites.forEach(s => {
                     s.angle += s.s;
                     s.mesh.position.set(Math.cos(s.angle)*s.r, Math.sin(s.angle)*s.r*Math.sin(s.t), Math.sin(s.angle)*s.r*Math.cos(s.t));
@@ -4880,33 +5046,17 @@ function throttle(func, limit) {
     };
 }
 
-// Unified 3D Parallax Effect for ALL cards (Mission + Academy)
-document.querySelectorAll('.mission-card-3d, .academy-card').forEach(card => {
-    card.classList.add('parallax-3d');
+// Unified Glow Effect for Mission Cards (No 3D Tilt)
+document.querySelectorAll('.mission-card-3d').forEach(card => {
     
     const handleMouseMove = throttle((e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        // Calculate rotation (same for both card types)
-        const rotateY = ((x - centerX) / centerX) * 12;
-        const rotateX = ((centerY - y) / centerY) * 12;
         
         // Set CSS variables for glow position
         card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
         card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
-        
-        // Apply 3D transform to the card
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-        
-        // Also transform inner elements if they exist (for mission cards)
-        const inner = card.querySelector('.mission-card-inner-3d');
-        if (inner) {
-            inner.style.transform = `rotateX(${rotateX * 0.5}deg) rotateY(${rotateY * 0.5}deg) translateZ(15px)`;
-        }
         
         // Move glow orb if exists
         const glow = card.querySelector('.mission-glow-orb');
@@ -4917,12 +5067,6 @@ document.querySelectorAll('.mission-card-3d, .academy-card').forEach(card => {
     }, 16); // ~60fps
     
     card.addEventListener('mousemove', handleMouseMove);
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-        const inner = card.querySelector('.mission-card-inner-3d');
-        if (inner) inner.style.transform = '';
-    });
 });
 
 // ==================== PROJECT IMAGE LIGHTBOX ====================
@@ -5004,28 +5148,282 @@ document.querySelectorAll('.gallery-thumb').forEach((thumb, i, thumbs) => {
     });
 });
 
+// ==================== TECH ARSENAL TABS FILTER ====================
+const filterButtons = document.querySelectorAll('.filter-tab');
+const skillCards = document.querySelectorAll('.skill-planet');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Toggle active class on buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        const filter = button.getAttribute('data-filter');
+        
+        skillCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            if (filter === 'all' || category === filter) {
+                card.classList.remove('hidden-card');
+            } else {
+                card.classList.add('hidden-card');
+            }
+        });
+        
+        // Refresh AOS animations so visible cards behave nicely
+        if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+        }
+    });
+});
+
+// ==================== SPACE CONSTELLATION SKY MAP ====================
+const observerCoords = {
+    lat: 13.0827,
+    lon: 80.2707,
+    name: "CHENNAI",
+    label: "13.08°N / 80.27°E"
+};
+
+const starsCatalog = [
+    { name: "Sirius", ra: 101.287, dec: -16.716, mag: -1.46 },
+    { name: "Canopus", ra: 95.987, dec: -52.697, mag: -0.74 },
+    { name: "Rigil Kent", ra: 219.902, dec: -60.833, mag: -0.27 },
+    { name: "Arcturus", ra: 213.915, dec: 19.182, mag: -0.05 },
+    { name: "Vega", ra: 279.234, dec: 38.783, mag: 0.03 },
+    { name: "Capella", ra: 79.172, dec: 45.997, mag: 0.08 },
+    { name: "Rigel", ra: 78.634, dec: -8.201, mag: 0.13 },
+    { name: "Procyon", ra: 114.825, dec: 5.224, mag: 0.34 },
+    { name: "Betelgeuse", ra: 88.792, dec: 7.407, mag: 0.50 },
+    { name: "Achernar", ra: 24.428, dec: -57.236, mag: 0.46 },
+    { name: "Hadar", ra: 210.955, dec: -60.373, mag: 0.61 },
+    { name: "Altair", ra: 297.695, dec: 8.868, mag: 0.76 },
+    { name: "Acrux", ra: 186.649, dec: -63.099, mag: 0.77 },
+    { name: "Aldebaran", ra: 68.980, dec: 16.509, mag: 0.86 },
+    { name: "Spica", ra: 201.298, dec: -11.161, mag: 0.97 },
+    { name: "Antares", ra: 247.351, dec: -26.432, mag: 1.05 },
+    { name: "Pollux", ra: 116.328, dec: 28.026, mag: 1.14 },
+    { name: "Fomalhaut", ra: 344.412, dec: -29.622, mag: 1.16 },
+    { name: "Deneb", ra: 310.357, dec: 45.280, mag: 1.25 },
+    { name: "Mimosa", ra: 191.930, dec: -59.688, mag: 1.25 },
+    { name: "Gacrux", ra: 187.791, dec: -57.111, mag: 1.63 },
+    { name: "Castor", ra: 113.649, dec: 31.888, mag: 1.58 },
+    { name: "Regulus", ra: 152.092, dec: 11.967, mag: 1.35 },
+    { name: "Bellatrix", ra: 81.282, dec: 6.349, mag: 1.64 },
+    { name: "Alnilam", ra: 84.053, dec: -1.201, mag: 1.69 },
+    { name: "Alnitak", ra: 85.189, dec: -1.943, mag: 1.74 },
+    { name: "Mintaka", ra: 82.994, dec: -0.301, mag: 2.23 },
+    { name: "Saiph", ra: 86.939, dec: -9.671, mag: 2.06 },
+    { name: "Delta Crucis", ra: 183.749, dec: -58.749, mag: 2.79 }
+];
+
+const constellations = [
+    {
+        name: "Orion",
+        lines: [
+            ["Betelgeuse", "Alnitak"],
+            ["Bellatrix", "Mintaka"],
+            ["Rigel", "Saiph"],
+            ["Mintaka", "Alnilam"],
+            ["Alnilam", "Alnitak"],
+            ["Alnitak", "Saiph"],
+            ["Mintaka", "Rigel"]
+        ]
+    },
+    {
+        name: "Southern Cross",
+        lines: [
+            ["Gacrux", "Acrux"],
+            ["Mimosa", "Delta Crucis"]
+        ]
+    },
+    {
+        name: "Gemini",
+        lines: [
+            ["Castor", "Pollux"]
+        ]
+    }
+];
+
+function getLocalSiderealTime(lon) {
+    const now = new Date();
+    const J2000 = Date.UTC(2000, 0, 1, 12, 0, 0);
+    const daysSinceJ2000 = (now.getTime() - J2000) / 86400000;
+    let gmst = (280.46061837 + 360.98564736629 * daysSinceJ2000) % 360;
+    if (gmst < 0) gmst += 360;
+    let lst = (gmst + lon) % 360;
+    if (lst < 0) lst += 360;
+    return lst;
+}
+
+function toHorizontal(ra, dec, lat, lst) {
+    const d2r = Math.PI / 180;
+    const r2d = 180 / Math.PI;
+    const decRad = dec * d2r;
+    const latRad = lat * d2r;
+    let ha = lst - ra;
+    if (ha < 0) ha += 360;
+    const haRad = ha * d2r;
+    const sinAlt = Math.sin(decRad) * Math.sin(latRad) + Math.cos(decRad) * Math.cos(latRad) * Math.cos(haRad);
+    const altRad = Math.asin(sinAlt);
+    const alt = altRad * r2d;
+    const cosAz = (Math.sin(decRad) - Math.sin(altRad) * Math.sin(latRad)) / (Math.cos(altRad) * Math.cos(latRad));
+    let azRad = Math.acos(Math.min(1.0, Math.max(-1.0, cosAz)));
+    let az = azRad * r2d;
+    if (Math.sin(haRad) > 0) {
+        az = 360 - az;
+    }
+    return { alt, az };
+}
+
+function renderSkyMap() {
+    const canvas = document.getElementById('sky-map-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width;
+    const h = canvas.height;
+    const r_max = w / 2 - 10;
+    const cx = w / 2;
+    const cy = h / 2;
+    ctx.clearRect(0, 0, w, h);
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.15)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r_max, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(cx, cy, r_max * (2/3), 0, Math.PI * 2);
+    ctx.arc(cx, cy, r_max * (1/3), 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - r_max);
+    ctx.lineTo(cx, cy + r_max);
+    ctx.moveTo(cx - r_max, cy);
+    ctx.lineTo(cx + r_max, cy);
+    ctx.stroke();
+    const lat = observerCoords.lat;
+    const lon = observerCoords.lon;
+    const lst = getLocalSiderealTime(lon);
+    const starsMap = {};
+    const visibleConstellations = new Set();
+    starsCatalog.forEach(star => {
+        const { alt, az } = toHorizontal(star.ra, star.dec, lat, lst);
+        starsMap[star.name] = { alt, az, name: star.name, mag: star.mag, visible: alt > 0 };
+    });
+    ctx.strokeStyle = 'rgba(129, 140, 248, 0.4)';
+    ctx.lineWidth = 1;
+    const d2r = Math.PI / 180;
+    const getProjCoords = (alt, az) => {
+        const r = r_max * (1 - alt / 90);
+        const angle = (az - 90) * d2r;
+        return {
+            x: cx + r * Math.cos(angle),
+            y: cy + r * Math.sin(angle)
+        };
+    };
+    const constellationLinesToDraw = [];
+    constellations.forEach(c => {
+        let anyPartVisible = false;
+        c.lines.forEach(([s1, s2]) => {
+            const star1 = starsMap[s1];
+            const star2 = starsMap[s2];
+            if (star1 && star2 && star1.visible && star2.visible) {
+                const pt1 = getProjCoords(star1.alt, star1.az);
+                const pt2 = getProjCoords(star2.alt, star2.az);
+                constellationLinesToDraw.push([pt1, pt2]);
+                anyPartVisible = true;
+            }
+        });
+        if (anyPartVisible) {
+            visibleConstellations.add(c.name);
+        }
+    });
+    constellationLinesToDraw.forEach(([pt1, pt2]) => {
+        ctx.beginPath();
+        ctx.moveTo(pt1.x, pt1.y);
+        ctx.lineTo(pt2.x, pt2.y);
+        ctx.stroke();
+    });
+    starsCatalog.forEach(star => {
+        const starData = starsMap[star.name];
+        if (starData && starData.visible) {
+            const pt = getProjCoords(starData.alt, starData.az);
+            const size = Math.max(1.2, 3.5 - 0.8 * star.mag);
+            ctx.fillStyle = star.mag < 0.5 ? 'rgba(56, 189, 248, 0.25)' : 'rgba(255, 255, 255, 0.15)';
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, size * 2.2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = star.mag < 0.5 ? '#38bdf8' : '#ffffff';
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, size, 0, Math.PI * 2);
+            ctx.fill();
+            if (star.mag < 0.5 && size > 2.5) {
+                ctx.fillStyle = 'rgba(255,255,255,0.4)';
+                ctx.font = '6px monospace';
+                ctx.fillText(star.name, pt.x + size + 2, pt.y + 2);
+            }
+        }
+    });
+    const visibleConstList = Array.from(visibleConstellations).join(', ');
+    const lstHours = lst / 15;
+    const h_lst = Math.floor(lstHours);
+    const m_lst = Math.floor((lstHours - h_lst) * 60);
+    const s_lst = Math.floor(((lstHours - h_lst) * 60 - m_lst) * 60);
+    const lstString = `${h_lst.toString().padStart(2, '0')}:${m_lst.toString().padStart(2, '0')}:${s_lst.toString().padStart(2, '0')}`;
+    const lstEl = document.getElementById('sky-lst-val');
+    const constEl = document.getElementById('sky-visible-const');
+    if (lstEl) lstEl.textContent = lstString;
+    if (constEl) constEl.textContent = visibleConstList || "None Major";
+}
+
+function formatCoords(lat, lon) {
+    const latDir = lat >= 0 ? 'N' : 'S';
+    const lonDir = lon >= 0 ? 'E' : 'W';
+    return `${Math.abs(lat).toFixed(2)}°${latDir} / ${Math.abs(lon).toFixed(2)}°${lonDir}`;
+}
+
+async function detectUserLocation() {
+    try {
+        const response = await fetch('https://ipapi.co/json/');
+        if (!response.ok) throw new Error('Network response not ok');
+        const data = await response.json();
+        
+        if (data.latitude && data.longitude) {
+            const cityName = data.city ? data.city.toUpperCase() : "DETECTED";
+            observerCoords.lat = data.latitude;
+            observerCoords.lon = data.longitude;
+            observerCoords.name = cityName;
+            observerCoords.label = formatCoords(data.latitude, data.longitude);
+            
+            // Update UI immediately
+            const locationValEl = document.getElementById('current-sky-location');
+            const coordsValEl = document.getElementById('sky-coords-val');
+            if (locationValEl) locationValEl.textContent = observerCoords.name;
+            if (coordsValEl) coordsValEl.textContent = observerCoords.label;
+            renderSkyMap();
+        }
+    } catch (err) {
+        console.warn('IP Geolocation failed or blocked. Defaulting to Chennai.', err);
+    }
+}
+
+function initSkyMap() {
+    const locationValEl = document.getElementById('current-sky-location');
+    const coordsValEl = document.getElementById('sky-coords-val');
+    
+    // Set initial values
+    if (locationValEl) locationValEl.textContent = observerCoords.name;
+    if (coordsValEl) coordsValEl.textContent = observerCoords.label;
+    
+    renderSkyMap();
+    setInterval(renderSkyMap, 1000);
+    
+    detectUserLocation();
+}
+
+initSkyMap();
+
         </script>
     
-<!-- === FIX: Academy Card Cursor Tilt Script === -->
-<script>
-document.querySelectorAll(".academy-card").forEach(card => {
-  card.addEventListener("mousemove", e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const midX = rect.width / 2;
-    const midY = rect.height / 2;
-    const rotateX = ((y - midY) / midY) * 8;
-    const rotateY = ((x - midX) / midX) * 8;
-    card.style.transform =
-      `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-  });
-  card.addEventListener("mouseleave", () => {
-    card.style.transform =
-      "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
-  });
-});
-</script>
 
 </body>
 
