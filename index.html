@@ -5422,6 +5422,62 @@ function initSkyMap() {
 
 initSkyMap();
 
+// ==================== SUPABASE VISITOR LOGGING ====================
+const SUPABASE_URL = "https://nllodvctervsxoaxyhbw.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_8EcCjDi1mOPUOXC-OIRw1g_GtK271Qn";
+
+async function logVisitorSession() {
+    let logPayload = {
+        ip: "BLOCKED/UNKNOWN",
+        city: "BLOCKED/UNKNOWN",
+        region: "BLOCKED/UNKNOWN",
+        country: "BLOCKED/UNKNOWN",
+        latitude: null,
+        longitude: null,
+        isp: "BLOCKED/UNKNOWN",
+        user_agent: navigator.userAgent,
+        screen_size: `${window.screen.width}x${window.screen.height}`
+    };
+    
+    try {
+        const response = await fetch('https://ipapi.co/json/');
+        if (response.ok) {
+            const data = await response.json();
+            logPayload.ip = data.ip || "UNKNOWN";
+            logPayload.city = data.city || "UNKNOWN";
+            logPayload.region = data.region || "UNKNOWN";
+            logPayload.country = data.country_name || "UNKNOWN";
+            logPayload.latitude = data.latitude || null;
+            logPayload.longitude = data.longitude || null;
+            logPayload.isp = data.org || "UNKNOWN";
+        }
+    } catch (geoErr) {
+        console.warn('Geolocation lookup blocked or failed. Logging basic device telemetry instead.', geoErr);
+    }
+    
+    try {
+        const supabaseResponse = await fetch(`${SUPABASE_URL}/rest/v1/visitor_logs`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify(logPayload)
+        });
+        
+        if (!supabaseResponse.ok) {
+            throw new Error(`Supabase write failed: ${supabaseResponse.statusText}`);
+        }
+        console.log('Telemetry payload transmitted.');
+    } catch (dbErr) {
+        console.warn('Visitor logging database write failed:', dbErr);
+    }
+}
+
+logVisitorSession();
+
         </script>
     
 
