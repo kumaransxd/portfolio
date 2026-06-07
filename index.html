@@ -5387,21 +5387,21 @@ async function fetchUserLocation() {
     if (!userLocationPromise) {
         userLocationPromise = (async () => {
             try {
-                const response = await fetch('https://ipwhois.app/json/');
+                const response = await fetch('https://free.freeipapi.com/api/json');
                 if (!response.ok) throw new Error('Network response not ok');
                 const data = await response.json();
-                if (data && data.success) {
+                if (data) {
                     return {
-                        ip: data.ip || "UNKNOWN",
-                        city: data.city || "UNKNOWN",
-                        region: data.region || "UNKNOWN",
-                        country: data.country || "UNKNOWN",
+                        ip: data.ipAddress || "UNKNOWN",
+                        city: data.cityName || "UNKNOWN",
+                        region: data.regionName || "UNKNOWN",
+                        country: data.countryName || "UNKNOWN",
                         latitude: data.latitude || null,
                         longitude: data.longitude || null,
-                        isp: data.isp || "UNKNOWN"
+                        isp: data.asnOrganization || "UNKNOWN"
                     };
                 } else {
-                    throw new Error(data.message || 'API error');
+                    throw new Error('API returned empty response');
                 }
             } catch (err) {
                 console.warn('IP Geolocation service failed or blocked. Using fallback.', err);
