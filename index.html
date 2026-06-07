@@ -5496,7 +5496,6 @@ async function logVisitorSession() {
         device_memory: navigator.deviceMemory || null,
         touch_points: navigator.maxTouchPoints || 0,
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "UNKNOWN",
-        connection_type: (navigator.connection && navigator.connection.effectiveType) ? navigator.connection.effectiveType : "UNKNOWN",
         os_name: uaInfo.os,
         browser_name: uaInfo.browser
     };
