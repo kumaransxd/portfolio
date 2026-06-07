@@ -5456,7 +5456,30 @@ initSkyMap();
 const SUPABASE_URL = "https://nllodvctervsxoaxyhbw.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_8EcCjDi1mOPUOXC-OIRw1g_GtK271Qn";
 
+function parseUserAgent(ua) {
+    let os = "UNKNOWN";
+    let browser = "UNKNOWN";
+    
+    // Parse OS
+    if (ua.indexOf("Win") !== -1) os = "Windows";
+    else if (ua.indexOf("Mac") !== -1 && ua.indexOf("iPhone") === -1 && ua.indexOf("iPad") === -1 && ua.indexOf("iPod") === -1) os = "macOS";
+    else if (ua.indexOf("iPhone") !== -1 || ua.indexOf("iPad") !== -1 || ua.indexOf("iPod") !== -1) os = "iOS";
+    else if (ua.indexOf("Android") !== -1) os = "Android";
+    else if (ua.indexOf("Linux") !== -1) os = "Linux";
+    
+    // Parse Browser
+    if (ua.indexOf("Edg") !== -1) browser = "Edge";
+    else if (ua.indexOf("Chrome") !== -1 && ua.indexOf("Safari") !== -1) browser = "Chrome";
+    else if (ua.indexOf("Safari") !== -1 && ua.indexOf("Chrome") === -1) browser = "Safari";
+    else if (ua.indexOf("Firefox") !== -1) browser = "Firefox";
+    else if (ua.indexOf("OPR") !== -1 || ua.indexOf("Opera") !== -1) browser = "Opera";
+    else if (ua.indexOf("Trident") !== -1 || ua.indexOf("MSIE") !== -1) browser = "IE";
+    
+    return { os, browser };
+}
+
 async function logVisitorSession() {
+    const uaInfo = parseUserAgent(navigator.userAgent);
     let logPayload = {
         ip: "BLOCKED/UNKNOWN",
         city: "BLOCKED/UNKNOWN",
@@ -5473,7 +5496,9 @@ async function logVisitorSession() {
         device_memory: navigator.deviceMemory || null,
         touch_points: navigator.maxTouchPoints || 0,
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "UNKNOWN",
-        connection_type: (navigator.connection && navigator.connection.effectiveType) ? navigator.connection.effectiveType : "UNKNOWN"
+        connection_type: (navigator.connection && navigator.connection.effectiveType) ? navigator.connection.effectiveType : "UNKNOWN",
+        os_name: uaInfo.os,
+        browser_name: uaInfo.browser
     };
     
     try {
